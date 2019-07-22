@@ -3,18 +3,13 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                echo "building pipeline"
+		sh 'echo "my first pipeline.."'
+		sh '''
+                echo "this is multistep pipeline"
+		ls -lah
+		'''
             }
         }
-        stage('Test') { 
-            steps {
-                echo "testing pipeline"
-            }
-        }
-        stage('Deploy') { 
-            steps {
-                echo "deploying the site.."
-            }
-        }
+        
     }
 }

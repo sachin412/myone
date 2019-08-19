@@ -1,18 +1,9 @@
-pipeline {
-    agent any
-
-    environment {
-		secret = credentials('SECRET_TEXT')
-	}  
-  
-    stages {
-        stage('Build') { 
-            steps {
-	  sh 'echo $secret'
-		
-                
+stages{
+        stage('cleaning old code'){
+            steps{
+                sh '''
+                rm -rf ${REPO_PATH}/jktyre_common_utilities/* && \
+                cp -r * ${REPO_PATH}/jktyre_common_utilities/
+                '''
             }
         }
-        
-    }
-}
